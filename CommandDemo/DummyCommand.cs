@@ -3,26 +3,27 @@ using System.Windows.Input;
 
 namespace CommandDemo
 {
-    public class DummyCommand<T> : ICommand
+    public class DummyCommand : ICommand
     {
-        private readonly T _instance;
-        private readonly Action<T> _action;
-        private readonly Func<T, bool> _condition;
-        public DummyCommand(T instance, Action<T> action, Func<T, bool> condition)
+        //private readonly T _instance;
+        private readonly Action<object> _action;
+        private readonly Predicate<object> _condition;
+        public DummyCommand(Action<object> action, Predicate<object> condition)
         {
-            _instance = instance;
+            //_instance = instance;
             _action = action;
             _condition = condition;
         }
 
         public bool CanExecute(object parameter)
         {
-            return _condition(_instance);
+
+            return _condition ==null || _condition(parameter);
         }
 
         public void Execute(object parameter)
         {
-            _action(_instance);
+            _action(parameter);
         }
 
         /// <summary>

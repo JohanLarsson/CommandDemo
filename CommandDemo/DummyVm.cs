@@ -12,9 +12,9 @@ namespace CommandDemo
     {
         public DummyVm()
         {
-            IncreaseCommand = new DummyCommand<DummyVm>(this, d => d.Method(), d => d.Number < 10);
-            IncreaseIfEvenCommand = new DummyCommand<DummyVm>(this, d => d.Method(), d => d.Number < 10 && d.Number%2==0);
-            DecreaseCommand = new DummyCommand<DummyVm>(this, d => d.Number--, d => d.Number > 0);
+            IncreaseCommand = new DummyCommand(o => Method(), o => Number < 10);
+            IncreaseIfEvenCommand = new DummyCommand(o => Number++, o => Number < 10 && Number % 2 == 0);
+            DecreaseCommand = new DummyCommand(o => Number--, o => Number > 0);
         }
 
         public ICommand IncreaseCommand { get; private set; }
