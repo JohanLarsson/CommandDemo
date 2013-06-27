@@ -8,7 +8,10 @@
     <Grid>
         <StackPanel>
             <TextBlock Text="{Binding Number}" FontSize="30" TextAlignment="Center"/>
-            <Button Command="{Binding DummyCommand}">Click it!</Button>
+            <Button Command="{Binding IncreaseCommand}">Increase</Button>
+            <Button Command="{Binding IncreaseIfEvenCommand}">Increase if even</Button>
+            <Button Command="{Binding DecreaseCommand}">Decrease</Button>
+
         </StackPanel>
     </Grid>
 </Window>
