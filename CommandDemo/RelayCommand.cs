@@ -3,22 +3,19 @@ using System.Windows.Input;
 
 namespace CommandDemo
 {
-    public class DummyCommand : ICommand
+    public class RelayCommand : ICommand
     {
-        //private readonly T _instance;
         private readonly Action<object> _action;
         private readonly Predicate<object> _condition;
-        public DummyCommand(Action<object> action, Predicate<object> condition)
+        public RelayCommand(Action<object> action, Predicate<object> condition)
         {
-            //_instance = instance;
             _action = action;
-            _condition = condition;
+            _condition = condition ?? (o => true);
         }
 
         public bool CanExecute(object parameter)
         {
-
-            return _condition ==null || _condition(parameter);
+            return _condition(parameter);
         }
 
         public void Execute(object parameter)
