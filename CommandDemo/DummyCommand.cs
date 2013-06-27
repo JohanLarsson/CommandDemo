@@ -25,6 +25,13 @@ namespace CommandDemo
             _action(_instance);
         }
 
-        public event EventHandler CanExecuteChanged;
+        /// <summary>
+        /// http://stackoverflow.com/a/2588145/1069200
+        /// </summary>
+        public event EventHandler CanExecuteChanged
+        {
+            add { CommandManager.RequerySuggested += value; }
+            remove { CommandManager.RequerySuggested -= value; }
+        }
     }
 }

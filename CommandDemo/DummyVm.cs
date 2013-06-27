@@ -12,10 +12,15 @@ namespace CommandDemo
     {
         public DummyVm()
         {
-            DummyCommand = new DummyCommand<DummyVm>(this, d => d.Number++, d => d.Number < 10);
+            DummyCommand = new DummyCommand<DummyVm>(this, d => d.Method(), d => d.Number < 10);
         }
 
         public ICommand DummyCommand { get; private set; }
+
+        public void Method()
+        {
+            Number++;
+        }
 
         private int _number;
         public int Number
