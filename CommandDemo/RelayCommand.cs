@@ -13,6 +13,12 @@ namespace CommandDemo
             _condition = condition ?? (o => true);
         }
 
+        public RelayCommand(Action<object> action)
+        {
+            _action = action;
+            _condition = (o) => true;
+        }
+
         public bool CanExecute(object parameter)
         {
             return _condition(parameter);
